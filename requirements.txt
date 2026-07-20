@@ -1,0 +1,22 @@
+# Dependencies for the ED simulation / train_ppo.py
+# Pinned to the versions from the working environment.
+
+# Core RL stack
+sb3-contrib==2.9.0          # MaskablePPO, ActionMasker, get_action_masks
+stable-baselines3==2.9.0    # backend for sb3-contrib (imported directly)
+gymnasium==1.3.0            # env base classes / spaces
+numpy==2.2.6
+
+# PyTorch (SB3 backend).
+# NOTE: the working env used a CUDA build (torch==2.13.0+cu130). For a GPU
+# install, use the official index, e.g.:
+#   pip install torch==2.13.0 --index-url https://download.pytorch.org/whl/cu130
+# The CPU wheel below installs from PyPI on any platform.
+torch==2.13.0
+
+# Progress bar for model.learn(progress_bar=True)
+tqdm==4.68.4
+rich==15.0.0
+
+# Optional: TensorBoard logging (train_ppo.py skips it gracefully if absent)
+tensorboard==2.21.0
