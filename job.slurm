@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ed-simulation-ppo
-#SBATCH --partition=gpua30q
+#SBATCH --partition=gpul40q
 #SBATCH --time=24:00:00
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
