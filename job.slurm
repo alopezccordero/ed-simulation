@@ -21,3 +21,10 @@ echo "current directory: $(pwd)"
 python --version
 
 python train_ppo.py
+
+WEBHOOK_URL=$(cat ~/.discord_webhook)
+
+curl -sS \
+    -H "Content-Type: application/json" \
+    -d '{"content":"ed-simulation-ppo job finished"}' \
+    "$WEBHOOK_URL"
