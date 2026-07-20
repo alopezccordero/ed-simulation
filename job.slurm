@@ -17,7 +17,7 @@ export MKL_NUM_THREADS=1
 cd ~/ed-simulation
 
 echo "Running on $(hostname)"
-echo "current directory: #(pwd)"
+echo "current directory: $(pwd)"
 python --version
 
 python train_ppo.py
