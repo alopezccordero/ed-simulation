@@ -129,7 +129,7 @@ def evaluate(model: MaskablePPO, days: int, seeds=range(5)) -> None:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--timesteps", type=int, default=300_000)
+    ap.add_argument("--timesteps", type=int, default=5_000_000)
     ap.add_argument("--days", type=int, default=C.EPISODE_DAYS)
     ap.add_argument("--seed", type=int, default=C.SEED)
     ap.add_argument("--n-envs", type=int, default=4)
