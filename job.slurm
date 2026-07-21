@@ -26,5 +26,9 @@ WEBHOOK_URL=$(cat ~/.discord_webhook)
 
 curl -sS \
     -H "Content-Type: application/json" \
-    -d '{"content":"ed-simulation-ppo job finished"}' \
+    -d "{\"content\":\"Job ${SLURM_JOB_ID} finished successfully" \
     "$WEBHOOK_URL"
+
+git add .
+git commit -m "experiment ${SLURM_JOB_ID} finished. added from slurm"
+git push origin main
