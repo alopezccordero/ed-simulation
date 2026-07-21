@@ -62,7 +62,7 @@ class EDEnv:
         # again immediately; otherwise advance the world to the next decision
         if not (acted and sim.waiting and sim.free_rooms()):
             sim.run_until_decision()
-        reward = sim.pop_reward()
+        reward = sim.pop_reward() * C.REWARD_SCALE
         terminated = sim.done
         obs = self._obs()
         info = {"action_mask": self.action_mask(), "stats": sim.summary()}
@@ -72,7 +72,7 @@ class EDEnv:
     def action_mask(self) -> np.ndarray:
         sim = self.sim
         mask = np.zeros(self.n_actions, dtype=bool)
-        mask[0] = True
+        mask[0] = True #what are these indexes for?
         mask[1] = True
         cands = sim.waiting_candidates()
         free = set(sim.free_rooms())

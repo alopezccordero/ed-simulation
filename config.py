@@ -159,10 +159,13 @@ REWARD = {
 """
 problems with reward configuration
 code? if coding patient - critical patient arrives, randomness will penalize the 
-system?
+system? - after reading the code. coding only happens when patient 
+doesnt get treated. deterioration to the point of coding.
 psych_no_sitter_per_min has to be a bigger reward - 
 #wait per min acuity needs a bigger reward 
 
 """
 EPISODE_DAYS = 3
 SEED = 42
+REWARD_SCALE = 0.001
+

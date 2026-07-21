@@ -209,7 +209,13 @@ class EDSim:
 
     # ------------------------------------------------------------ lifecycle
     def reset(self, seed: Optional[int] = None):
-        s = self.seed if seed is None else seed
+
+        if seed is None:
+            s = int(np.random.randint(0, 2**32, dtype=np.uint32))
+        else:
+            s = seed
+
+
         self.rng = np.random.default_rng(s)
         self.rng_x = np.random.default_rng(s * 1_000_003 + 17)  # exogenous stream:
         # arrivals, patient attributes, waves, callouts — identical across policies
@@ -275,6 +281,8 @@ class EDSim:
             "psych_no_sitter_per_min_reward": 0.00,
             "extra_nurse_reward": 0.00
         }
+        
+        
 
 
         # kick things off
@@ -900,7 +908,7 @@ class EDSim:
             "avg_door_to_room_min": round(s["door_to_room_sum"] / max(1, s["door_to_room_n"]), 1),
             "avg_door_to_provider_min": round(s["door_to_provider_sum"] / max(1, s["door_to_provider_n"]), 1),
             "boarding_hours": round(s["boarding_min"] / 60.0, 1),
-            "wait_per_min_by_acuity_reward": round(self.reward_stats["wait_per_min_acuity_reward"], 2),
+            "wait_per_min_by_acuity_reward": round(self.reward_stats["wait_per_min_acuity_reward"] , 2),
             "boarding_per_minute_reward": round(self.reward_stats["boarding_per_minute_reward"], 2),
             "los_per_minute_reward": round(self.reward_stats["los_per_min_reward"], 2),
             "lwbs_reward": round(self.reward_stats["lwbs_reward"], 2),
